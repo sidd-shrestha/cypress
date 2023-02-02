@@ -8,6 +8,8 @@ class recruitmentPO {
         return cy.get(".oxd-topbar-body-nav-tab-item").contains('Vacancies').click();
     }
 
+    
+
 
     // it('switch between candidate and vacancies tab', () => {
     // var recruitmentTab = cy.get(".oxd-topbar-header-hamburger");
