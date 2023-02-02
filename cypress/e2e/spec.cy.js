@@ -7,9 +7,9 @@ import adminPO from './pageObject/adminPO'
 // })
 describe('Login', () => {
   let login = new adminPO();
-  beforeach: login
+  // beforeach: login
   it('should successfully login', () => {
-
+    let login = new adminPO();
     login.visit();
     login.username();
     login.password();
