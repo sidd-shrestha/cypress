@@ -13,6 +13,7 @@ describe('Recruitment', () => {
         // recruitment.vacancyTab()
         // recruitment.togglebutton()
         recruitment.jobTitle()
-        recruitment.accountAssistant()
+        recruitment.jobTitleDropdown()
+        recruitment.accountAssistant().click()
     })
 })
