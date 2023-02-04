@@ -18,8 +18,20 @@ class recruitmentPO {
     }
     
     accountAssistant() {
-        return cy.get('.oxd-select-dropdown').contains('Account Assistant')
+        return cy.get('.oxd-select-dropdown')
+        // return cy.get('.oxd-select-dropdown').contains('Account Assistant')
         //yo contains lai dynamic kasari banaune?
+    }
+
+    jobTitleName() {
+        // return cy.get('.oxd-select-dropdown').then(($jobTitle)=>{
+        //     const jobTitles = $jobTitle
+        //     const job = 'Account Assistant'
+        //     expect(jobTitles).eq(job)
+        // })
+        // const job = 'Account Assistant'
+        return cy.get('.oxd-select-dropdown > :nth-child(2) > span') ||
+        cy.get('.oxd-select-dropdown > :nth-child(3) > span')
     }
 
     // vacancy() {

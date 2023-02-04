@@ -5,15 +5,16 @@ describe('Recruitment', () => {
     let recruitment = new recruitmentPO()
     it('should recruitment', () => {
         login.visit(),
-        login.username(),
-        login.password(),
-        login.submit()
+            login.username(),
+            login.password(),
+            login.submit()
         recruitment.recuitmentTab().click()
         recruitment.recuitmentTab().url().should('include', '/recruitment/viewCandidates')
         // recruitment.vacancyTab()
         // recruitment.togglebutton()
-        recruitment.jobTitle()
+        // recruitment.jobTitle()
         recruitment.jobTitleDropdown()
-        recruitment.accountAssistant().click()
+        recruitment.accountAssistant().contains('Account Assistant').click()
+        // recruitment.jobTitleName().click()
     })
 })
