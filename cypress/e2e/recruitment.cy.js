@@ -16,5 +16,8 @@ describe('Recruitment', () => {
         recruitment.jobTitleDropdown()
         recruitment.accountAssistant().contains('Account Assistant').click()
         // recruitment.jobTitleName().click()
+        // recruitment.candidateName()
+        recruitment.startDateOfApplication()
+        recruitment.endDateOfApplication()
     })
 })

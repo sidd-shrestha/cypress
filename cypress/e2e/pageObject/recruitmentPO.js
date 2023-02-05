@@ -16,7 +16,7 @@ class recruitmentPO {
     jobTitleDropdown() {
         return cy.get('.oxd-select-text--active:first').click()
     }
-    
+
     accountAssistant() {
         return cy.get('.oxd-select-dropdown')
         // return cy.get('.oxd-select-dropdown').contains('Account Assistant')
@@ -31,8 +31,25 @@ class recruitmentPO {
         // })
         // const job = 'Account Assistant'
         return cy.get('.oxd-select-dropdown > :nth-child(2) > span') ||
-        cy.get('.oxd-select-dropdown > :nth-child(3) > span')
+            cy.get('.oxd-select-dropdown > :nth-child(3) > span')
     }
+
+    candidateName() {
+        const inputCandidateName = cy.get('.oxd-autocomplete-text-input').type('a')
+        return inputCandidateName.and(cy.get('.oxd-autocomplete-dropdown > :nth-child(1) > span').click({force:true}))
+    }
+
+    startDateOfApplication(){
+        // const start = cy.get('.oxd-input oxd-input--active') 
+        // return cy.get('.oxd-date-input').and(cy.get('.oxd-input'))
+        return cy.get('input[placeholder="From"]').click().get('.--offset-4 > .oxd-calendar-date').click()
+    }
+
+    endDateOfApplication(){
+        // const end = cy.get('input[placeholder="To"]') 
+        return cy.get('input[placeholder="To"]').click().get(':nth-child(2) > .oxd-calendar-date').click()
+    }
+
 
     // vacancy() {
     //     return cy.get('.oxd-select-text-input:second').should('be.visible')
