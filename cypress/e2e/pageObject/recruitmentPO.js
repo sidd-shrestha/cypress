@@ -47,7 +47,62 @@ class recruitmentPO {
 
     endDateOfApplication(){
         // const end = cy.get('input[placeholder="To"]') 
-        return cy.get('input[placeholder="To"]').click().get(':nth-child(2) > .oxd-calendar-date').click()
+        return cy.get('input[placeholder="To"]').click().get(':nth-child(4) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input-calendar > .oxd-calendar-wrapper > .oxd-calendar-dates-grid > :nth-child(3) > .oxd-calendar-date').click()
+    }
+
+    searchButton(){
+        return cy.get('.orangehrm-left-space').click({force:true})
+    }
+
+    addButton(){
+        return cy.get('.orangehrm-header-container > .oxd-button').click()
+    }
+
+    firstName(){
+        return cy.get('input[name="firstName"]').type('Jay')
+    }
+
+    middleName(){
+        return cy.get('input[name="middleName"]').type('Man')
+    }
+
+    lastName(){
+        return cy.get('input[name="lastName"]').type('Shrestha')
+    }
+
+    vacancyDropdown(){
+        return cy.get('.oxd-select-text--active:first').click().get(':nth-child(5) > span').click()
+    }
+    
+    email(){
+        return cy.get('input[fdprocessedid="gyfcpk"]').type('jay@gmail.com')
+        return cy.get('.data-v-2fe357a6').type('jay@gmail.com')
+        //Same class name for multiple input feilds
+    }
+
+    browse(){
+        return cy.get('.oxd-file-div--active').click({force:true})
+        //How does this work?
+    }
+
+    keywords(){
+        return cy.get('input[placeholder="Enter comma seperated words..."]').type('new,hr,associate')
+    }
+
+    dateOfApplication(){
+        return cy.get('input[placeholder="yyyy-mm-dd"]').click().get('.--offset-4 > .oxd-calendar-date').click()
+    }
+
+    notes(){
+        return cy.get('.oxd-textarea--resize-vertical').type('lorem impsum')
+    }
+
+    consentCheckbox(){
+        return cy.get('.oxd-checkbox-input').click()
+    }
+
+    saveButton(){
+        return cy.get('button[type="submit"]').click()
     }
 
 
