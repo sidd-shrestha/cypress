@@ -3,13 +3,14 @@ import adminPO from "./pageObject/adminPO"
 describe('Recruitment', () => {
     let login = new adminPO()
     let recruitment = new recruitmentPO()
-    it('should search recruitment candidates', () => {
+    it.only('should search recruitment candidates', () => {
         login.visit(),
             login.username(),
             login.password(),
-            login.submit()
-        recruitment.recuitmentTab().click()
-        recruitment.recuitmentTab().url().should('include', '/recruitment/viewCandidates')
+            login.submit(),
+            login.url(),
+            login.header()
+        recruitment.recuitmentTab()
         // recruitment.vacancyTab()
         // recruitment.togglebutton()
         // recruitment.jobTitle()
@@ -19,16 +20,21 @@ describe('Recruitment', () => {
         // recruitment.candidateName()
         recruitment.startDateOfApplication()
         recruitment.endDateOfApplication()
+        recruitment.keywords()
+        recruitment.applyMethod()
+        recruitment.applyMethodDropdown()
+        recruitment.manual()
         recruitment.searchButton()
+        recruitment.resethButton()
     })
-    it.only('should add recruitment candidates', () => {
+    it('should add recruitment candidates', () => {
         login.visit(),
             login.username(),
             login.password(),
             login.submit()
-        recruitment.recuitmentTab().click()
-        recruitment.recuitmentTab().url().should('include', '/recruitment/viewCandidates')
+        recruitment.recuitmentTab()
         recruitment.addButton()
+        recruitment.addCandidate()
         recruitment.firstName()
         recruitment.middleName()
         recruitment.lastName()
@@ -40,6 +46,7 @@ describe('Recruitment', () => {
         recruitment.notes()
         recruitment.consentCheckbox()
         recruitment.saveButton()
+        recruitment.cancelButton()
     })
     it('should remove recruitment candidates', () => {
 
@@ -48,7 +55,20 @@ describe('Recruitment', () => {
 
     })
     it('should search recruitment vacancies', () => {
-
+        login.visit(),
+        login.username(),
+        login.password(),
+        login.submit(),
+        login.url(),
+        login.header()
+    recruitment.recuitmentTab()
+    recruitment.vacancyTab()
+    recruitment.vacancy()
+    recruitment.vacancyDropdown()
+    recruitment.hiringManager()
+    recruitment.hiringManagerDropdown()
+    recruitment.status()
+    recruitment.statusDropdown()
     })
     it('should add recruitment vacancies', () => {
 
