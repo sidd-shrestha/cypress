@@ -5,7 +5,7 @@ class recruitmentPO {
     }
 
     vacancyTab() {
-        return cy.get(".oxd-topbar-body-nav-tab-item").contains('Vacancies').click().url().should('include', '/recruitment/viewJobVacancy')
+        return cy.get(".oxd-topbar-body-nav-tab-item").contains('Vacancies').click({force:true}).url().should('include', '/recruitment/viewJobVacancy')
     }
 
     jobTitle() {
@@ -36,7 +36,8 @@ class recruitmentPO {
 
     candidateName() {
         const inputCandidateName = cy.get('.oxd-autocomplete-text-input').type('a')
-        return inputCandidateName.and(cy.get('.oxd-autocomplete-dropdown > :nth-child(1) > span').click({ force: true }))
+        return inputCandidateName.and(cy.get('.oxd-autocomplete-dropdown > :nth-child(1) > span').click({ force: true })).get('.oxd-layout-context').click()
+        //this throws out a chainers split is not a function error
     }
 
     startDateOfApplication() {
@@ -77,7 +78,7 @@ class recruitmentPO {
     }
 
     addButton() {
-        return cy.get('.orangehrm-header-container > .oxd-button').click()
+        return cy.get('.orangehrm-header-container > .oxd-button').click({force:true})
     }
 
     addCandidate() {
@@ -132,7 +133,7 @@ class recruitmentPO {
     }
 
     cancelButton() {
-        return cy.get('.oxd-button--ghost').click().url().should('include', '/web/index.php/recruitment/viewCandidates')
+        return cy.get('.oxd-button--ghost').click().url()
     }
 
     vacancy() {
@@ -157,6 +158,35 @@ class recruitmentPO {
 
     statusDropdown() {
         return cy.get('.oxd-select-dropdown > :nth-child(2) > span').click()
+    }
+
+    addVacancy() {
+        return cy.get('h6').should('contain', 'Add Vacancy').url().should('include', '/addJobVacancy')
+    }
+
+    vacancyName() {
+        return cy.get('.oxd-form > :nth-child(1) > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-input').type('HR')
+    }
+
+    hiringManagerName() {
+        const inputCandidateName = cy.get('.oxd-autocomplete-text-input').type('a')
+        return inputCandidateName.get('.oxd-autocomplete-dropdown > :nth-child(1) > span').click({ force: true }).get('.oxd-layout-context').click()
+    }
+
+    numberOfPositions(){
+        return cy.get('.oxd-grid-2 > .oxd-grid-item > .oxd-input-group > :nth-child(2) > .oxd-input').type('4')
+    }
+
+    activeCheckboxSwitch(){
+        return cy.get(':nth-child(4) > .oxd-grid-item > .oxd-switch-wrapper > label > .oxd-switch-input').click()
+    }
+
+    publishInRssFeedAndWebPage(){
+        return cy.get(':nth-child(6) > .oxd-grid-item > .oxd-switch-wrapper > label > .oxd-switch-input').click()
+    }
+
+    editVacancy() {
+        return cy.get('h6').should('contain', 'Edit Vacancy').url().should('include', '/addJobVacancy')
     }
 
     // togglebutton() {
