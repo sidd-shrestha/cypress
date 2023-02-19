@@ -136,6 +136,46 @@ class recruitmentPO {
         return cy.get('.oxd-button--ghost').click().url()
     }
 
+    sortAscendingVacancy(){
+        return cy.get(':nth-child(2) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    }
+
+    sortDescendingVacancy(){
+        return cy.get(':nth-child(2) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    }
+
+    sortAscendingJobTitle(){
+        return cy.get(':nth-child(3) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    }
+
+    sortDescendingJobTitle(){
+        return cy.get(':nth-child(3) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    }
+
+    sortAscendingHiringManager(){
+        return cy.get(':nth-child(4) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    }
+
+    sortDescendingHiringManager(){
+        return cy.get(':nth-child(4) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    }
+    
+    sortAscendingDateOfApplication(){
+        return cy.get(':nth-child(5) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    }
+
+    sortDescendingDateOfApplication(){
+        return cy.get(':nth-child(5) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    }
+
+    sortAscendingStatus(){
+        return cy.get(':nth-child(6) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    }
+
+    sortDescendingStatus(){
+        return cy.get(':nth-child(6) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    }
+
     vacancy() {
         return cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text').should('be.visible').click()
     }

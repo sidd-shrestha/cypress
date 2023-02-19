@@ -3,7 +3,7 @@ import adminPO from "./pageObject/adminPO"
 describe('Recruitment', () => {
     let login = new adminPO()
     let recruitment = new recruitmentPO()
-    it('should search recruitment candidates', () => {
+    beforeEach('should login and open recruitment tab', () => {
         login.visit(),
             login.username(),
             login.password(),
@@ -11,6 +11,8 @@ describe('Recruitment', () => {
             login.url(),
             login.header()
         recruitment.recuitmentTab()
+    })
+    it('should search candidates', () => {
         // recruitment.vacancyTab()
         // recruitment.togglebutton()
         // recruitment.jobTitle()
@@ -27,12 +29,7 @@ describe('Recruitment', () => {
         recruitment.searchButton()
         recruitment.resethButton()
     })
-    it('should add recruitment candidates', () => {
-        login.visit(),
-            login.username(),
-            login.password(),
-            login.submit()
-        recruitment.recuitmentTab()
+    it('should add candidates', () => {
         recruitment.addButton()
         recruitment.addCandidate()
         recruitment.firstName()
@@ -48,20 +45,27 @@ describe('Recruitment', () => {
         recruitment.saveButton()
         recruitment.cancelButton().should('include', '/web/index.php/recruitment/viewCandidates')
     })
-    it('should remove recruitment candidates', () => {
+    it('should sort candidates in ascending order', () => {
+        recruitment.sortAscendingVacancy()
+        recruitment.sortAscendingJobTitle()
+        recruitment.sortAscendingHiringManager()
+        recruitment.sortAscendingDateOfApplication
+        recruitment.sortAscendingStatus()
+    })
+    it.only('should sort candidates in descending order', () => {
+        recruitment.sortDescendingVacancy()
+        recruitment.sortDescendingJobTitle()
+        recruitment.sortDescendingHiringManager()
+        recruitment.sortAscendingDateOfApplication()
+        recruitment.sortDescendingStatus()
+    })
+    it('should remove candidates', () => {
 
     })
-    it('should edit recruitment candidates', () => {
+    it('should edit candidates', () => {
 
     })
-    it('should search recruitment vacancies', () => {
-        login.visit(),
-            login.username(),
-            login.password(),
-            login.submit(),
-            login.url(),
-            login.header()
-        recruitment.recuitmentTab()
+    it('should search vacancies', () => {
         recruitment.vacancyTab()
         recruitment.vacancy()
         recruitment.vacancyDropdown()
@@ -70,12 +74,7 @@ describe('Recruitment', () => {
         recruitment.status()
         recruitment.statusDropdown()
     })
-    it.only('should add recruitment vacancies', () => {
-        login.visit(),
-            login.username(),
-            login.password(),
-            login.submit()
-        recruitment.recuitmentTab()
+    it('should add vacancies', () => {
         recruitment.vacancyTab()
         recruitment.addButton()
         recruitment.addVacancy()
@@ -93,10 +92,13 @@ describe('Recruitment', () => {
         // recruitment.saveButton() // clicking the save Button again leads to the same page
         recruitment.cancelButton().should('include', '/web/index.php/recruitment/viewJobVacancy')
     })
-    it('should remove recruitment vacancies', () => {
+    it('should sort vacancies', () => {
+        recruitment.vacancyTab()
+    })
+    it('should remove vacancies', () => {
 
     })
-    it('should edit recruitment vacancies', () => {
+    it('should edit vacancies', () => {
 
     })
 })
