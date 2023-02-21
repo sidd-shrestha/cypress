@@ -27,7 +27,7 @@ describe('Recruitment', () => {
         recruitment.applyMethodDropdown()
         recruitment.manual()
         recruitment.searchButton()
-        recruitment.resethButton()
+        recruitment.resetButton()
     })
     it('should add candidates', () => {
         recruitment.addButton()
@@ -49,14 +49,14 @@ describe('Recruitment', () => {
         recruitment.sortAscendingVacancy()
         recruitment.sortAscendingJobTitle()
         recruitment.sortAscendingHiringManager()
-        recruitment.sortAscendingDateOfApplication
+        recruitment.sortAscendingDateOfApplication()
         recruitment.sortAscendingStatus()
     })
-    it.only('should sort candidates in descending order', () => {
+    it('should sort candidates in descending order', () => {
         recruitment.sortDescendingVacancy()
         recruitment.sortDescendingJobTitle()
         recruitment.sortDescendingHiringManager()
-        recruitment.sortAscendingDateOfApplication()
+        recruitment.sortDescendingDateOfApplication()
         recruitment.sortDescendingStatus()
     })
     it('should remove candidates', () => {
@@ -73,6 +73,8 @@ describe('Recruitment', () => {
         recruitment.hiringManagerDropdown()
         recruitment.status()
         recruitment.statusDropdown()
+        recruitment.searchButton()
+        recruitment.resetButton()
     })
     it('should add vacancies', () => {
         recruitment.vacancyTab()
@@ -92,8 +94,19 @@ describe('Recruitment', () => {
         // recruitment.saveButton() // clicking the save Button again leads to the same page
         recruitment.cancelButton().should('include', '/web/index.php/recruitment/viewJobVacancy')
     })
-    it('should sort vacancies', () => {
+    it.only('should sort vacancies in ascending order', () => {
         recruitment.vacancyTab()
+        recruitment.sortAscendingVacancy()
+        recruitment.sortAscendingJobTitle()
+        recruitment.sortAscendingHiringManager()    //bug
+        recruitment.sortAscendingStatus()           //bug
+    })
+    it('should sort vacancies in descending order', () => {
+        recruitment.vacancyTab()
+        recruitment.sortDescendingVacancy()
+        recruitment.sortDescendingJobTitle()
+        recruitment.sortDescendingHiringManager()   //bug
+        recruitment.sortDescendingStatus()          //bug
     })
     it('should remove vacancies', () => {
 

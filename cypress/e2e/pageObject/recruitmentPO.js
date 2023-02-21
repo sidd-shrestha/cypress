@@ -5,7 +5,7 @@ class recruitmentPO {
     }
 
     vacancyTab() {
-        return cy.get(".oxd-topbar-body-nav-tab-item").contains('Vacancies').click({force:true}).url().should('include', '/recruitment/viewJobVacancy')
+        return cy.get(".oxd-topbar-body-nav-tab-item").contains('Vacancies').click({ force: true }).url().should('include', '/recruitment/viewJobVacancy')
     }
 
     jobTitle() {
@@ -73,12 +73,12 @@ class recruitmentPO {
         return cy.get('.orangehrm-left-space').click({ force: true })
     }
 
-    resethButton() {
+    resetButton() {
         return cy.get('button[type="reset"]').click({ force: true })
     }
 
     addButton() {
-        return cy.get('.orangehrm-header-container > .oxd-button').click({force:true})
+        return cy.get('.orangehrm-header-container > .oxd-button').click({ force: true })
     }
 
     addCandidate() {
@@ -136,44 +136,61 @@ class recruitmentPO {
         return cy.get('.oxd-button--ghost').click().url()
     }
 
-    sortAscendingVacancy(){
-        return cy.get(':nth-child(2) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    sortAscendingVacancy() {
+        var heading = cy.get('h6')
+        if (heading == 'Add Candidate') {
+            return cy.get(':nth-child(2) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+        }
+        else
+            return cy.get(':nth-child(2) > .oxd-table-header-sort > .oxd-icon-button__icon').click({ force: true }).get('.--active > ul > :nth-child(1) > .oxd-text').click()
     }
 
-    sortDescendingVacancy(){
-        return cy.get(':nth-child(2) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    sortDescendingVacancy() {
+        var heading = cy.get('h6')
+        if (heading == 'Add Candidate')
+            return cy.get(':nth-child(2) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+        else
+            return cy.get(':nth-child(2) > .oxd-table-header-sort > .oxd-icon-button__icon').click({ force: true }).get('.--active > ul > :nth-child(2) > .oxd-text').click()
     }
 
-    sortAscendingJobTitle(){
-        return cy.get(':nth-child(3) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    sortAscendingJobTitle() {
+        return cy.get(':nth-child(3) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(1) > .oxd-text').click()
     }
 
-    sortDescendingJobTitle(){
-        return cy.get(':nth-child(3) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    sortDescendingJobTitle() {
+        return cy.get(':nth-child(3) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(2) > .oxd-text').click()
     }
 
-    sortAscendingHiringManager(){
-        return cy.get(':nth-child(4) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    sortAscendingHiringManager() {
+        return cy.get(':nth-child(4) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(1) > .oxd-text').click()
     }
 
-    sortDescendingHiringManager(){
-        return cy.get(':nth-child(4) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
-    }
-    
-    sortAscendingDateOfApplication(){
-        return cy.get(':nth-child(5) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    sortDescendingHiringManager() {
+        return cy.get(':nth-child(4) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(2) > .oxd-text').click()
     }
 
-    sortDescendingDateOfApplication(){
-        return cy.get(':nth-child(5) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    sortAscendingDateOfApplication() {
+        return cy.get(':nth-child(5) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(1) > .oxd-text').click()
     }
 
-    sortAscendingStatus(){
-        return cy.get(':nth-child(6) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    sortDescendingDateOfApplication() {
+        return cy.get(':nth-child(5) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(2) > .oxd-text').click()
     }
 
-    sortDescendingStatus(){
-        return cy.get(':nth-child(6) > .oxd-table-header-sort > .bi-arrow-down-up').click({force:true}).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+    sortAscendingStatus() {
+        var heading = cy.get('h6')
+        if (heading == 'Add Candidate')
+            return cy.get(':nth-child(6) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+        else
+            return cy.get(':nth-child(5) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(1) > .oxd-text').click()
+    }
+
+    sortDescendingStatus() {
+        var heading = cy.get('h6')
+        if (heading == 'Add Candidate')
+            return cy.get(':nth-child(6) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(2) > .oxd-text').click()
+        else
+            return cy.get(':nth-child(5) > .oxd-table-header-sort > .bi-arrow-down-up').click({ force: true }).get('.--active > ul > :nth-child(2) > .oxd-text').click()
     }
 
     vacancy() {
@@ -213,15 +230,15 @@ class recruitmentPO {
         return inputCandidateName.get('.oxd-autocomplete-dropdown > :nth-child(1) > span').click({ force: true }).get('.oxd-layout-context').click()
     }
 
-    numberOfPositions(){
+    numberOfPositions() {
         return cy.get('.oxd-grid-2 > .oxd-grid-item > .oxd-input-group > :nth-child(2) > .oxd-input').type('4')
     }
 
-    activeCheckboxSwitch(){
+    activeCheckboxSwitch() {
         return cy.get(':nth-child(4) > .oxd-grid-item > .oxd-switch-wrapper > label > .oxd-switch-input').click()
     }
 
-    publishInRssFeedAndWebPage(){
+    publishInRssFeedAndWebPage() {
         return cy.get(':nth-child(6) > .oxd-grid-item > .oxd-switch-wrapper > label > .oxd-switch-input').click()
     }
 
